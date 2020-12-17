@@ -7,7 +7,7 @@ Describir la tabla employees
 
 /* 2
 Describir la tabla departments
-*/
+*/ hasta
 
 /* 3
 Describir la tabla locations
