@@ -6,18 +6,6 @@
 */
 
 
-/*1
-DESCRIPCIÓN TABLA EMPLEADOS*/
-
-desc employees;
-
-/* 2
-Describir la tabla departments
-*/
-
-desc departments;
-
-
 
 ------------------------------------------------------------------------------------------------
 --SELECTS SIMPLES
@@ -25,43 +13,71 @@ desc departments;
 /* 1
 Describir la tabla employees
 */
-
+desc employees;
 /* 2
 Describir la tabla departments
 */
-
+desc departments;
 /* 3
 Describir la tabla locations
 */
-
+desc locations;
 /* 4
 Datos de la tabla regions
 */
-
+select*from regions;
 /* 5
 Datos de la tabla countries
 */
-
+select*from countries;
 /* 6
 Ciudad y estado de las localidades
 */
+select
+city,
+state_province
 
+from locations;
 /* 7
 Nombre, apellido, salario de los empleados
 */
+select
+first_name,
+last_name,
+salary
 
+from employees;
 /* 8
 Número de departamento, nombre, y manager_id de los departamentos
 */
+select
+department_id,
+department_name,
+manager_id
 
+from departments;
 /* 9
 Número y nombre de departamento, además, el código del empleado jefe,
 de la localidad 1700.
 */
 
+select
+
+concat (
+        concat (department_id, ' '),
+        department_name)"Nº y nombre Departamento ",
+manager_id
+
+
+
+from departments
+
+where location_id in 1700;
+
 /* 10
 Nombre y número de departamento de los empleados.
 */
+
 
 /* 11
 Nombre y número de departamento de los empleados
