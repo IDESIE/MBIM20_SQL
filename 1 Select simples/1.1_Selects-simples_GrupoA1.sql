@@ -63,14 +63,7 @@ ordenados descendentemente.
 
 /* 14
 Nombre, apellido y salario ordenados por id de empleado descendentemente
-*/select employee_id,first_name,last_name,salary
-from employees
-order by
-employee_id DESC;
-
-or this to hide the employee id
-
-select first_name,last_name,salary
+*/select first_name,last_name,salary
 from employees
 order by
 employee_id DESC;
