@@ -7,7 +7,7 @@ Describir la tabla employees
 
 /* 2
 Describir la tabla departments
-*/
+*/desc departments;
 
 /* 3
 Describir la tabla locations
@@ -19,7 +19,8 @@ Datos de la tabla regions
 
 /* 5
 Datos de la tabla countries
-*/
+*/select country_id,country_name,region_id
+from countries;
 
 /* 6
 Ciudad y estado de las localidades
@@ -31,7 +32,8 @@ Nombre, apellido, salario de los empleados
 
 /* 8
 Número de departamento, nombre, y manager_id de los departamentos
-*/
+*/select department_id,department_name,manager_id
+from departments;
 
 /* 9
 Número y nombre de departamento, además, el código del empleado jefe,
@@ -45,7 +47,10 @@ Nombre y número de departamento de los empleados.
 /* 11
 Nombre y número de departamento de los empleados
 ordenados por número de departamento ascendentemente.
-*/
+*/select department_id,department_name
+from departments
+order by
+department_id ASC;
 
 /* 12
 Listar los distintos números de departamento en el que trabajan los empleados.
@@ -58,7 +63,17 @@ ordenados descendentemente.
 
 /* 14
 Nombre, apellido y salario ordenados por id de empleado descendentemente
-*/
+*/select employee_id,first_name,last_name,salary
+from employees
+order by
+employee_id DESC;
+
+or this to hide the employee id
+
+select first_name,last_name,salary
+from employees
+order by
+employee_id DESC;
 
 /* 15
 Nombre, apellido y salario ordenado por apellido ascendentemente y salario descendentemente
@@ -71,7 +86,12 @@ códigos de los distintos trabajos que existen en el departamento 30
 /* 17
 códigos de los distintos trabajos que existen en el departamento 60
 ordenados descendentemente
-*/
+*/select job_id, department_id
+from employees
+WHERE
+department_id = 60
+order by
+job_id DESC;
 
 /* 18
 Nombre, apellido y correo de los empleados del departamento 30
@@ -88,7 +108,13 @@ o que sean del departamento 90
 nombre, apellido y número de departamento de los empleados
 que no tengan comisión. Ordenados por número de departamento 
 del mayor a menor y por apellido descendentemente.
-*/
+*/select department_id, last_name, first_name
+from employees
+WHERE
+commission_pct IS NULL
+order by
+1 DESC,
+2 DESC;
 
 /* 21
 nombre, apellido, número de departamento y salario de los empleados
@@ -106,7 +132,12 @@ empieza por la R, incluidos.
 
 /* 23
 Lista de apellidos que su segunda letra sea una 'a'
-*/
+*/select last_name
+from employees
+Where 
+last_name LIKE'_a%'
+order by
+1 ASC;
 
 /* 24
 Lista de apellidos de empleados donde el apellido empieza por alguna vocal
