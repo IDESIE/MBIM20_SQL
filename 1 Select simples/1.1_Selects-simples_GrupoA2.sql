@@ -1,14 +1,11 @@
-A Paco no le sale
-o si?
-Veo que a Anna tampoco....
-Me dejáis solo...
+
 ------------------------------------------------------------------------------------------------
 --SELECTS SIMPLES
 ------------------------------------------------------------------------------------------------
 /* 1
 Describir la tabla employees
 */
-
+desc employees;
 /* 2
 Describir la tabla departments
 */
@@ -20,7 +17,8 @@ Describir la tabla locations
 /* 4
 Datos de la tabla regions
 */
-
+select *   
+from regions;
 /* 5
 Datos de la tabla countries
 */
@@ -32,7 +30,8 @@ Ciudad y estado de las localidades
 /* 7
 Nombre, apellido, salario de los empleados
 */
-
+select first_name, last_name, salary
+from employees;
 /* 8
 Número de departamento, nombre, y manager_id de los departamentos
 */
@@ -45,7 +44,8 @@ de la localidad 1700.
 /* 10
 Nombre y número de departamento de los empleados.
 */
-
+select department_id, department_name
+from departments;
 /* 11
 Nombre y número de departamento de los empleados
 ordenados por número de departamento ascendentemente.
@@ -59,7 +59,9 @@ Listar los distintos números de departamento en el que trabajan los empleados.
 Listar los distintos números de departamento en el que trabajan los empleados
 ordenados descendentemente.
 */
-
+select department_id
+from departments
+order by department_id desc;
 /* 14
 Nombre, apellido y salario ordenados por id de empleado descendentemente
 */
@@ -71,7 +73,9 @@ Nombre, apellido y salario ordenado por apellido ascendentemente y salario desce
 /* 16
 códigos de los distintos trabajos que existen en el departamento 30
 */
-
+select job_id
+from employees
+where department_id=30;
 /* 17
 códigos de los distintos trabajos que existen en el departamento 60
 ordenados descendentemente
@@ -87,7 +91,11 @@ Nombre, apellido y correo de los empleados del departamento 30
 cuyo salario es menor a 3000
 o que sean del departamento 90
 */
-
+select first_name, last_name, email, department_id, salary
+from employees
+where department_id = 30
+and salary < 3000
+or department_id = 90;
 /* 20
 nombre, apellido y número de departamento de los empleados
 que no tengan comisión. Ordenados por número de departamento 
