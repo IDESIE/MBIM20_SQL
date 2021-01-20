@@ -167,7 +167,13 @@ pero como salario una etiqueta que indique
 'BAJO' si es menor a 4280, 'ALTO' si es mayor a 15230
 y 'MEDIO' si está entre medias
 */
-
+select first_name,last_name,
+    case 
+        when salary>15230 then 'ALTO'
+        when salary<4280 then 'BAJO'
+        else 'MEDIO'
+    end
+from employees;
 /* 26
 Listar los correos concatenados con el texto '@company.com'
 */ select concat(email,'@company.com')
@@ -198,6 +204,9 @@ Número y nombre de los departamentos que no tienen jefe.
 Nombre de las columnas de la tabla de empleados 'Employees'
 que no tienen un guión bajo en el nombre.
 */
-
+select column_name,table_name
+from user_tab_columns
+where table_name='EMPLOYEES'
+    and (column_name)not like'%/_%'escape'/';
 --
 ------------------------------------------------------------------------------------------------
