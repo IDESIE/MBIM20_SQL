@@ -170,7 +170,8 @@ y 'MEDIO' si está entre medias
 
 /* 26
 Listar los correos concatenados con el texto '@company.com'
-*/
+*/ select concat(email,'@company.com')
+from employees;
 
 /* 27
 Lista de nombres de las ciudades que su país es 'US'
@@ -184,7 +185,10 @@ from locations
 where country_id not in ('US');
 /* 29
 Número y nombre de los departamentos que tienen un jefe.
-*/
+*/select department_id,department_name
+from departments
+WHERE
+manager_id IS NOT NULL;
 
 /* 30
 Número y nombre de los departamentos que no tienen jefe.
