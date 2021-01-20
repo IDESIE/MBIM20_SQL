@@ -173,6 +173,8 @@ Número y nombre de los departamentos que no tienen jefe.
 Nombre de las columnas de la tabla de empleados 'Employees'
 que no tienen un guión bajo en el nombre.
 */
-
+select column_name
+from user_tab_columns
+where table_name = 'EMPLOYEES' and column_name not like '%|_%' escape '|';
 --
 ------------------------------------------------------------------------------------------------
