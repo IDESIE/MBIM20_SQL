@@ -62,6 +62,7 @@ ordenados descendentemente.
 select department_id
 from departments
 order by department_id desc;
+
 /* 14
 Nombre, apellido y salario ordenados por id de empleado descendentemente
 */
