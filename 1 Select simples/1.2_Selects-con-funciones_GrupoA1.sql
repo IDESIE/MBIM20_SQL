@@ -24,6 +24,11 @@ La suma de salarios, cuál es el mínimo, el máximo y la media de salario
 /* 4
 Cuántos empleados hay, cuántos tienen salario y cuántos tienen comisión.
 */
+select 
+    count(employee_id)"Nº de empleados",
+    count(salary)"Nº de empleados con salario",
+    count(commission_pct)"Nº de empleados con comisión"
+from employees;
 
 /* 5
 Por un lado la media entre la media de salarios y el mínimo salario
@@ -54,7 +59,10 @@ la primera letra de su nombre y el apellido
 Número de empleados dados de alta por día
 ordenados descendentemente por la fecha
 */
-
+select hire_date fecha,count(employee_id)"Nº de empleados dados de alta"
+from employees
+group by hire_date
+order by hire_date desc;
 /* 11
 Un listado por año de la media de salarios
 de los empleados que ingresaron ese año
