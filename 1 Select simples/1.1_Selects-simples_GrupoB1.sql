@@ -1,26 +1,26 @@
 --SELECTS SIMPLES
 ------------------------------------------------------------------------------------------------
-/* 1
-Describir la tabla employees
+/* 1 LJ
+Describir la tabla employees 
 */
 DESC employees;
-/* 2
+/* 2 L
 Describir la tabla departments
 */
 
-/* 3
+/* 3 A
 Describir la tabla locations
 */
 
-/* 4
+/* 4 LJ
 Datos de la tabla regions
 */
 
-/* 5
+/* 5 L
 Datos de la tabla countries
 */
 
-/* 6
+/* 6 A
 Ciudad y estado de las localidades
 */
 
