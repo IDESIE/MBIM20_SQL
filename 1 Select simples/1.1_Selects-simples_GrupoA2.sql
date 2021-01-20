@@ -154,7 +154,9 @@ Lista de nombres de las ciudades que su país es 'US'
 /* 28
 Lista de nombre de las ciudades que su país no es Estados Unidos
 */
-
+select city
+from locations
+where not country_id='US';
 /* 29
 Número y nombre de los departamentos que tienen un jefe.
 */
