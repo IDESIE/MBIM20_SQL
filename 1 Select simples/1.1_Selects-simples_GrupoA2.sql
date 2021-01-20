@@ -115,7 +115,17 @@ Número de empleado, nombre y apellido de los empleados
 desde el apellido que empieza por L hasta los que su apellido
 empieza por la R, incluidos.
 */
+select employee_id, first_name, last_name
+from employees;
 
+select SUBSTR(last_name, 1, 1) "Inicial del Apellido"
+from employees
+where SUBSTR(last_name, 1, 1) BETWEEN 'L' AND 'R';
+
+select  employee_id, first_name, last_name
+from employees
+where SUBSTR(last_name, 1, 1) BETWEEN 'L' AND 'R'
+order by last_name asc;
 /* 23
 Lista de apellidos que su segunda letra sea una 'a'
 */
