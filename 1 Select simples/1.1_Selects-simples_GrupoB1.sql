@@ -3,7 +3,7 @@
 /* 1
 Describir la tabla employees
 */
-
+DESC employees;
 /* 2
 Describir la tabla departments
 */
