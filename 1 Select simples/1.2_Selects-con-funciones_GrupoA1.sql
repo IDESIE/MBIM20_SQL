@@ -16,6 +16,9 @@ Y de etiqueta del campo "Fecha actual".
 /* 2
 Día en palabras en el cual naciste
 */
+select
+rtrim(to_char(to_date('04/01/1994','dd/mm/yyyy'),'Day'))
+from dual;
 
 /* 3
 La suma de salarios, cuál es el mínimo, el máximo y la media de salario
@@ -35,6 +38,10 @@ Por un lado la media entre la media de salarios y el mínimo salario
 Y por otro lado, la media entre la media de salarios y el máximo salario
 Solo la parte entera, sin decimales ni redondeo.
 */
+select
+trunc((avg(salary)+min(salary))/2) "Media Baja",
+trunc((avg(salary)+max(salary))/2) "Media Alta"
+from employees;
 
 /* 6
 Listar el número de departamento y el máximo salario en cada uno de ellos.
@@ -49,6 +56,13 @@ en orden descendente.
 Mostrar en una fila cuántos empleados son jefes de departamento
 y en otra fila cuántos son jefes de otros empleados.
 */
+select count(distinct manager_id) Nº_Jefe,
+'DEPARTAMENTO'Tipo_Jefe
+from departments
+union
+select count(distinct manager_id), 
+'EMPLEADOS'
+from employees;
 
 /* 9
 Listar nombre, apellido de los empleados que les coindice a la vez
