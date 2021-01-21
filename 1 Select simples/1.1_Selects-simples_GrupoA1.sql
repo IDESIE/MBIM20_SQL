@@ -215,7 +215,9 @@ manager_id IS NOT NULL;
 /* 30
 Número y nombre de los departamentos que no tienen jefe.
 */
-
+select department_id,department_name
+from departments
+WHERE manager_id IS NULL;
 /* 31
 Nombre de las columnas de la tabla de empleados 'Employees'
 que no tienen un guión bajo en el nombre.
