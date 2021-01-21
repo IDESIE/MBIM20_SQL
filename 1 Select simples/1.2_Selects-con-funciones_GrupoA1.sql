@@ -82,6 +82,10 @@ Un listado por año de la media de salarios
 de los empleados que ingresaron ese año
 ordenados de forma descendente por año
 */
+select to_char(hire_date,'yy'),avg(salary)
+from employees
+group by to_char(hire_date,'yy')
+order by 1 DESC;
 
 /* 12
 Nombre del día en el que más empleados
