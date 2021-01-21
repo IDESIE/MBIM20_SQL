@@ -16,6 +16,9 @@ Y de etiqueta del campo "Fecha actual".
 /* 2
 Día en palabras en el cual naciste
 */
+select
+rtrim(to_char(to_date('04/01/1994','dd/mm/yyyy'),'Day'))
+from dual;
 
 /* 3
 La suma de salarios, cuál es el mínimo, el máximo y la media de salario
@@ -24,12 +27,21 @@ La suma de salarios, cuál es el mínimo, el máximo y la media de salario
 /* 4
 Cuántos empleados hay, cuántos tienen salario y cuántos tienen comisión.
 */
+select 
+    count(employee_id)"Nº de empleados",
+    count(salary)"Nº de empleados con salario",
+    count(commission_pct)"Nº de empleados con comisión"
+from employees;
 
 /* 5
 Por un lado la media entre la media de salarios y el mínimo salario
 Y por otro lado, la media entre la media de salarios y el máximo salario
 Solo la parte entera, sin decimales ni redondeo.
 */
+select
+trunc((avg(salary)+min(salary))/2) "Media Baja",
+trunc((avg(salary)+max(salary))/2) "Media Alta"
+from employees;
 
 /* 6
 Listar el número de departamento y el máximo salario en cada uno de ellos.
@@ -44,6 +56,13 @@ en orden descendente.
 Mostrar en una fila cuántos empleados son jefes de departamento
 y en otra fila cuántos son jefes de otros empleados.
 */
+select count(distinct manager_id) Nº_Jefe,
+'DEPARTAMENTO'Tipo_Jefe
+from departments
+union
+select count(distinct manager_id), 
+'EMPLEADOS'
+from employees;
 
 /* 9
 Listar nombre, apellido de los empleados que les coindice a la vez
@@ -54,12 +73,19 @@ la primera letra de su nombre y el apellido
 Número de empleados dados de alta por día
 ordenados descendentemente por la fecha
 */
-
+select hire_date fecha,count(employee_id)"Nº de empleados dados de alta"
+from employees
+group by hire_date
+order by hire_date desc;
 /* 11
 Un listado por año de la media de salarios
 de los empleados que ingresaron ese año
 ordenados de forma descendente por año
 */
+select to_char(hire_date,'yy'),avg(salary)
+from employees
+group by to_char(hire_date,'yy')
+order by 1 DESC;
 
 /* 12
 Nombre del día en el que más empleados
