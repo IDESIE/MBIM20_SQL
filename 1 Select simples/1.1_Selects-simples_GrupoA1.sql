@@ -26,7 +26,8 @@ from countries;
 /* 6
 Ciudad y estado de las localidades
 */
-
+select city,state_province
+from locations;
 /* 7
 Nombre, apellido, salario de los empleados
 */
@@ -41,7 +42,9 @@ from departments;
 Número y nombre de departamento, además, el código del empleado jefe,
 de la localidad 1700.
 */
-
+select department_id,department_name,manager_id
+from departments
+where location_id=1700;
 /* 10
 Nombre y número de departamento de los empleados.
 */
@@ -58,7 +61,8 @@ department_id ASC;
 /* 12
 Listar los distintos números de departamento en el que trabajan los empleados.
 */
-
+select department_id
+from employees;
 /* 13
 Listar los distintos números de departamento en el que trabajan los empleados
 ordenados descendentemente.
@@ -78,7 +82,9 @@ employee_id DESC;
 /* 15
 Nombre, apellido y salario ordenado por apellido ascendentemente y salario descendentemente
 */
-
+select first_name,last_name,salary
+from employees
+order by last_name ASC,salary DESC;
 /* 16
 códigos de los distintos trabajos que existen en el departamento 30
 */
