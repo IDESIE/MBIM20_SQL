@@ -196,7 +196,9 @@ from employees;
 /* 27
 Lista de nombres de las ciudades que su país es 'US'
 */
-
+select city
+from locations
+where country_id='US';
 /* 28
 Lista de nombre de las ciudades que su país no es Estados Unidos
 */
