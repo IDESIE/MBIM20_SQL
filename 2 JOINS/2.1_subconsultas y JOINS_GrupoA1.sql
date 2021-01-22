@@ -22,6 +22,23 @@ salary > (select avg(salary) from employees);
 -- 5
 -- Nombre, apellido, salario, nombre del departamento y ciudad
 -- del empleado que gana más y el que menos
+select
+employees.first_name,employees.last_name,employees.salary,department_name,locations.city
+    from
+    employees
+    join departments using(department_id)
+    join locations using(location_id)
+    where
+    salary = (select max(salary) from employees)
+    union
+    select
+    employees.first_name,employees.last_name,employees.salary,department_name,locations.city
+        from
+        employees
+        join departments using(department_id)
+        join locations using(location_id)
+        where
+        salary = (select min(salary) from employees);
 
 -- 6
 -- Número de empleados y número de departamentos por ciudad (nombre)
@@ -49,6 +66,19 @@ salary > (select avg(salary) from employees);
 -- 'BAJO' si el salario es menor a la mediabaja (media entre el salario mínimo y la media de salarios)
 -- 'ALTO' si el salario es mayor a la mediaalta (media entre el salario máximo y la media de salarios)
 -- 'MEDIO' si el salario está entre la mediabaja y medialata.
+
+Select 
+first_name,Last_name,
+CASE
+    when salary < (trunc((select avg(salary) from employees)+(select min(salary) from employees)/2)) then
+    'BAJO'
+    when salary > (trunc((select avg(salary) from employees)+(select max(salary) from employees)/2)) then
+    'ALTO'
+    else
+    'MEDIO'
+    end SALARIO,salary
+    FROM employees
+    order by salary desc;
 
 -- 12
 -- Número de empleados dados de alta por día
