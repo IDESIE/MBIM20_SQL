@@ -27,6 +27,17 @@ from dual;
 /* 2
 Día en palabras en el cual naciste
 */
+select '30/09/1994' "Dia que nací"
+from dual;
+
+select 'Treina de setiembre de mil novecientos noventa y cuatro' "Dia que nací"
+from dual;
+
+select TO_DATE('30/09/1994','DD/MM/YYYY')
+from dual;
+
+select to_char((TO_DATE('30/09/1994','DD/MM/YYYY')), 'Day, DD "de" month "de" YYYY')"Dia que nací"
+from dual;
 
 /* 3
 La suma de salarios, cuál es el mínimo, el máximo y la media de salario
