@@ -12,7 +12,18 @@ la palabra "de", el mes en minúscula en palabras, la palabra "de", el año en c
 finalizando con un punto. Luego la hora en formato 24h con minutos y segundos.
 Y de etiqueta del campo "Fecha actual".
 */
-asdfasdfasdfasdfasd
+select current_date 
+from dual;
+
+select current_timestamp "Fecha actual"
+from dual;
+
+select to_char(sysdate, 'DD/MON/YYYY')"Fecha actual"
+from dual;
+
+select to_char(sysdate, 'Day, DD "de" month "de" YYYY "." HH:MI:SS')"Fecha actual"
+from dual;
+
 /* 2
 Día en palabras en el cual naciste
 */
