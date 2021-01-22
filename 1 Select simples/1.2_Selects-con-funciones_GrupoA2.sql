@@ -50,7 +50,11 @@ Listar el número de departamento y el máximo salario en cada uno de ellos.
 Mostrar los nombres de los empleados que se repiten indicando cuántos hay del mismo
 en orden descendente.
 */
-
+select first_name
+from employees
+group by first_name
+HAVING COUNT(first_name) > 1
+order by first_name desc;
 /* 8
 Mostrar en una fila cuántos empleados son jefes de departamento
 y en otra fila cuántos son jefes de otros empleados.
