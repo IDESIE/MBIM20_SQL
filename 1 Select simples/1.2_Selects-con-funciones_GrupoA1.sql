@@ -51,7 +51,11 @@ from employees;
 /* 6
 Listar el número de departamento y el máximo salario en cada uno de ellos.
 */
-
+select 
+max (salary)"Máximo salario"
+from employees
+group by department_id;
+   
 /* 7
 Mostrar los nombres de los empleados que se repiten indicando cuántos hay del mismo
 en orden descendente.
