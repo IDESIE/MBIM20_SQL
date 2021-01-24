@@ -102,5 +102,9 @@ order by 1 DESC;
 Nombre del día en el que más empleados
 se han dado de alta
 */
+select count (to_char(hire_date,'day')),to_char(hire_date,'day')
+from employees
+    group by to_char(hire_date,'day')
+    order by 1 desc;                           /*ESTA PODRÍA ESTAR MEJOR*/
 
 ------------------------------------------------------------------------------------------------
