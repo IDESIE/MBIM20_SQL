@@ -23,7 +23,12 @@ from dual;
 /* 3
 La suma de salarios, cuál es el mínimo, el máximo y la media de salario
 */
-
+select
+   sum (salary) "Suma de salarios",
+   min (salary)"Salario mínimo",
+   max(salary)"Salario máximo",
+   avg(salary)"Media de salario"
+from employees;    
 /* 4
 Cuántos empleados hay, cuántos tienen salario y cuántos tienen comisión.
 */
