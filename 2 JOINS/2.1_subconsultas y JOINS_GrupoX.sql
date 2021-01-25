@@ -31,7 +31,11 @@ where employee_id=(select manager_id
 
 -- 6
 -- Número de empleados y número de departamentos por ciudad (nombre)
-
+select count(first_name)"Numero de empleados", count(department_name)"Numero de departamentos", city "Ciudad"
+from employees
+    join departments on employees.department_id = departments.department_id
+    join locations on locations.location_id = departments.location_id
+    group by locations.city;
 -- 7
 -- Número de empleados y número de departamentos de todas las ciudades (nombre)
 -- ordenado por número de empleados descendentemente
