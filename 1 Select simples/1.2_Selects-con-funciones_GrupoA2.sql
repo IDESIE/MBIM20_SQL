@@ -46,7 +46,8 @@ La suma de salarios, cuál es el mínimo, el máximo y la media de salario
 /* 4
 Cuántos empleados hay, cuántos tienen salario y cuántos tienen comisión.
 */
-
+select count(employee_id), count(salary), count(commission_pct)
+from employees;
 /* 5
 Por un lado la media entre la media de salarios y el mínimo salario
 Y por otro lado, la media entre la media de salarios y el máximo salario
