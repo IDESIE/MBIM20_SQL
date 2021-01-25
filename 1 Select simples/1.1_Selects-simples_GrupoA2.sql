@@ -13,7 +13,7 @@ Describir la tabla departments
 /* 3
 Describir la tabla locations
 */
-
+describe locations;
 /* 4
 Datos de la tabla regions
 */
