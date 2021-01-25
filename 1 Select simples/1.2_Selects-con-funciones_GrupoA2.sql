@@ -80,7 +80,10 @@ la primera letra de su nombre y el apellido
 Número de empleados dados de alta por día
 ordenados descendentemente por la fecha
 */
-
+select count(employee_id)"Numero de empleados", hire_date"Fecha de Alta"
+from employees
+group by hire_date
+order by hire_date desc;
 /* 11
 Un listado por año de la media de salarios
 de los empleados que ingresaron ese año
