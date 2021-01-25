@@ -90,7 +90,7 @@ order by salary desc;
 /* 16
 códigos de los distintos trabajos que existen en el departamento 30
 */
-select job_id
+select distinct job_id
 from employees
 where department_id=30;
 /* 17
