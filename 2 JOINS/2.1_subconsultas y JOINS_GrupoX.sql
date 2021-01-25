@@ -48,7 +48,7 @@ from employees
 
 -- 9
 -- Listar el nombre, apellido y salario de los tres empleados que ganan más
-
+SELECT first_name, last_name, salary FROM ( SELECT * FROM employees ORDER BY salary desc) WHERE rownum <= 3;
 -- 10
 -- Imaginad que queremos crear nombres de usuario para direcciones de correo.
 -- Cuyo formato es la primera letra del nombre más el apellido.
