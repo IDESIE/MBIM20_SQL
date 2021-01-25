@@ -3,13 +3,26 @@
 ------------------------------------------------------------------------------------------------
 -- 1
 -- Nombre y apellido del empleado que más gana.
-
+Select first_name, last_name
+from employees
+where salary = (select max(salary) from employees);
 -- 2
 -- Nombre, apellido y salario de los empleados que ganan más que la media de salarios.
 
 -- 3
 -- Nombre y apellido del jefe del departamento de Marketing
- 
+select department_name, manager_id
+from departments
+where department_name='Marketing';
+
+
+
+select first_name, last_name
+from employees
+where employee_id=(select manager_id
+                    from departments
+                    where department_name='Marketing');
+-- 4
 -- Nombre y apellido  de los empleados del departamento de Marketing
 
 -- 5
@@ -18,7 +31,11 @@
 
 -- 6
 -- Número de empleados y número de departamentos por ciudad (nombre)
- 
+select count(first_name)"Numero de empleados", count(department_name)"Numero de departamentos", city "Ciudad"
+from employees
+    join departments on employees.department_id = departments.department_id
+    join locations on locations.location_id = departments.location_id
+    group by locations.city;
 -- 7
 -- Número de empleados y número de departamentos de todas las ciudades (nombre)
 -- ordenado por número de empleados descendentemente
@@ -31,7 +48,7 @@
 
 -- 9
 -- Listar el nombre, apellido y salario de los tres empleados que ganan más
- 
+SELECT first_name, last_name, salary FROM ( SELECT * FROM employees ORDER BY salary desc) WHERE rownum <= 3;
 -- 10
 -- Imaginad que queremos crear nombres de usuario para direcciones de correo.
 -- Cuyo formato es la primera letra del nombre más el apellido.
