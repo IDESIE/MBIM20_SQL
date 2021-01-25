@@ -127,7 +127,19 @@ y que se cumpla que son del departamento 60 o del 90
 ordenados por número de departamento descendentemente
 y por salario ascendentemente.
 */
+select first_name, last_name, department_id, salary
+from employees
+where department_id in (60,90) 
+    and commission_pct is null 
+        or salary < 6000
+order by department_id desc;
 
+select first_name, last_name, department_id, salary
+from employees
+where department_id in (60,90) 
+    and commission_pct is null 
+        or salary < 6000
+order by salary desc;
 /* 22
 Número de empleado, nombre y apellido de los empleados
 desde el apellido que empieza por L hasta los que su apellido
