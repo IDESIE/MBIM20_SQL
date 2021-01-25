@@ -57,7 +57,13 @@ ordenados por número de departamento ascendentemente.
 /* 12
 Listar los distintos números de departamento en el que trabajan los empleados.
 */
+select first_name, department_name, departments.department_id
+from employees
+    full join departments on employees.department_id = departments.department_id;
 
+select first_name, department_name, departments.department_id
+from employees
+    join departments on employees.department_id = departments.department_id;
 /* 13
 Listar los distintos números de departamento en el que trabajan los empleados
 ordenados descendentemente.
