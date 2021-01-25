@@ -190,7 +190,7 @@ Listar los correos concatenados con el texto '@company.com'
 /* 27
 Lista de nombres de las ciudades que su país es 'US'
 */
-select city, country_id
+select city
 from locations
 where country_id = 'US';
 /* 28
