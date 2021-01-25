@@ -79,7 +79,13 @@ Nombre, apellido y salario ordenados por id de empleado descendentemente
 /* 15
 Nombre, apellido y salario ordenado por apellido ascendentemente y salario descendentemente
 */
+select first_name, last_name, salary
+from employees
+order by last_name asc;
 
+select first_name, last_name, salary
+from employees
+order by salary desc;
 /* 16
 códigos de los distintos trabajos que existen en el departamento 30
 */
@@ -95,7 +101,9 @@ ordenados descendentemente
 Nombre, apellido y correo de los empleados del departamento 30
 cuyo salario es menor a 3000
 */
-
+select first_name, last_name, email, salary
+from employees
+where department_id=30 and salary<3000;
 /* 19
 Nombre, apellido y correo de los empleados del departamento 30
 cuyo salario es menor a 3000
