@@ -165,7 +165,13 @@ Lista de apellidos de empleados donde el apellido empieza por alguna vocal
 y que su salario es menor a 3000 o mayor a 9000
 y debe cumplirse que su departamento es el 30, 60 o 90.
 */
-
+select last_name
+from employees
+where last_name like 'A%' 
+    or last_name like 'E%' 
+    or last_name like 'I%' 
+    or last_name like 'O%' 
+    or last_name like 'U%';
 /* 25
 Nombre, apellido y el salario de los empleados
 pero como salario una etiqueta que indique 
