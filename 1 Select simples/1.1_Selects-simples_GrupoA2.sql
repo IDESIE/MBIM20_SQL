@@ -159,9 +159,7 @@ order by last_name asc;
 /* 23
 Lista de apellidos que su segunda letra sea una 'a'
 */
-select last_name
-from employees
-where last_name like '_a%';
+
 /* 24
 Lista de apellidos de empleados donde el apellido empieza por alguna vocal
 y que su salario es menor a 3000 o mayor a 9000
