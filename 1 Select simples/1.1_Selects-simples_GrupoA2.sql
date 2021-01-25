@@ -68,8 +68,9 @@ from employees
 Listar los distintos números de departamento en el que trabajan los empleados
 ordenados descendentemente.
 */
-select department_id
-from departments
+select distinct departments.department_id
+from employees
+    join departments on employees.department_id = departments.department_id
 order by department_id desc;
 
 /* 14
