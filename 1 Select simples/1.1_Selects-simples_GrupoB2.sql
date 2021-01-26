@@ -6,56 +6,73 @@
 */
 
 
-
 ------------------------------------------------------------------------------------------------
 --SELECTS SIMPLES
 ------------------------------------------------------------------------------------------------
 /* 1
 Describir la tabla employees
 */
-desc employees;
+
+desc employees; 
 /* 2
 Describir la tabla departments
 */
+
 desc departments;
+
 /* 3
 Describir la tabla locations
 */
+
 desc locations;
+
 /* 4
 Datos de la tabla regions
 */
-select*from regions;
+
+desc regions;
+
 /* 5
 Datos de la tabla countries
 */
+
 select*from countries;
+
 /* 6
 Ciudad y estado de las localidades
+*/
+
+des
 */
 select
 city,
 state_province
 
 from locations;
+
+
 /* 7
 Nombre, apellido, salario de los empleados
 */
+
 select
 first_name,
 last_name,
 salary
 
 from employees;
+
 /* 8
 Número de departamento, nombre, y manager_id de los departamentos
 */
+
 select
 department_id,
 department_name,
 manager_id
 
 from departments;
+
 /* 9
 Número y nombre de departamento, además, el código del empleado jefe,
 de la localidad 1700.
@@ -68,17 +85,27 @@ concat (
         department_name)"Nº y nombre Departamento ",
 manager_id
 
-
-
 from departments
-
 where location_id in 1700;
+
+
+
 
 /* 10
 Nombre y número de departamento de los empleados.
 */
 
-
+        
+SELECT
+        
+concat (
+        concat (first_name, ' '),
+        last_name)"Nombre",
+        department_id "Código de departamento"
+        
+        
+        from employees;
+        
 /* 11
 Nombre y número de departamento de los empleados
 ordenados por número de departamento ascendentemente.
@@ -97,6 +124,19 @@ ordenados descendentemente.
 Nombre, apellido y salario ordenados por id de empleado descendentemente
 */
 
+select first_name, last_name, salary,
+
+from employees
+
+order by employee_id desc;
+
+/*Se puede comprobar con 
+select first_name, last_name, salary, employee_id
+from employees
+order by employee_id desc;
+*/
+
+
 /* 15
 Nombre, apellido y salario ordenado por apellido ascendentemente y salario descendentemente
 */
@@ -114,6 +154,21 @@ ordenados descendentemente
 Nombre, apellido y correo de los empleados del departamento 30
 cuyo salario es menor a 3000
 */
+
+select first_name, last_name, email, 
+
+from employees
+
+where ( department_id = 30
+and salary<3000);
+
+/*Se puede comprobar con 
+select first_name, last_name, email, DEPARTMENT_ID, SALARY
+from employees
+where ( department_id = 30
+and salary<3000);
+*/
+
 
 /* 19
 Nombre, apellido y correo de los empleados del departamento 30
@@ -141,6 +196,14 @@ desde el apellido que empieza por L hasta los que su apellido
 empieza por la R, incluidos.
 */
 
+
+
+select employee_id, first_name, last_name
+
+    from employees 
+    where last_name between 'K%' and 'R';
+
+
 /* 23
 Lista de apellidos que su segunda letra sea una 'a'
 */
@@ -162,10 +225,15 @@ y 'MEDIO' si está entre medias
 Listar los correos concatenados con el texto '@company.com'
 */
 
+
+    select  concat (email, '@company.com')
+    
+    from employees;
+
 /* 27
 Lista de nombres de las ciudades que su país es 'US'
 */
-
+sfdaf
 /* 28
 Lista de nombre de las ciudades que su país no es Estados Unidos
 */
@@ -178,10 +246,27 @@ Número y nombre de los departamentos que tienen un jefe.
 Número y nombre de los departamentos que no tienen jefe.
 */
 
+
+select
+    department_id, department_name
+    
+    from departments
+        
+    where manager_id is null;
+
+
 /* 31
 Nombre de las columnas de la tabla de empleados 'Employees'
 que no tienen un guión bajo en el nombre.
 */
 
---
+
+select
+    column_name
+    
+    from user_tab_columns
+        
+    where table_name = 'EMPLOYEES' and column_name not like '%|_%' escape '|';
+    
+
 ------------------------------------------------------------------------------------------------
