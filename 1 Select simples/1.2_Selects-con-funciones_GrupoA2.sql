@@ -133,6 +133,10 @@ Listar nombre, apellido de los empleados que les coindice a la vez
 la primera letra de su nombre y el apellido
 */
 
+select first_name, last_name
+from employees
+where substr(first_name, 1,1) = substr(last_name, 1,1);
+
 /* 10
 Número de empleados dados de alta por día
 ordenados descendentemente por la fecha
