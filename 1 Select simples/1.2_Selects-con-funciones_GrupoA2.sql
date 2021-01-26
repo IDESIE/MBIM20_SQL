@@ -85,7 +85,49 @@ order by first_name desc;
 Mostrar en una fila cuántos empleados son jefes de departamento
 y en otra fila cuántos son jefes de otros empleados.
 */
+select employee_id, manager_id
+from employees;
 
+select manager_id, department_id
+from departments;
+
+select manager_id, employee_id
+from employees;
+
+select count(manager_id)
+from departments;
+
+select count(manager_id)
+from employees;
+
+select count(employees.manager_id), count(departments.manager_id)
+from employees, departments;
+
+select count(employees.manager_id), count(departments.manager_id)
+from employees, departments
+where departments.manager_id=employees.manager_id;
+
+select count(employees.manager_id), count(departments.manager_id)
+from employees, departments;
+
+select count(manager_id)
+from departments
+union all
+select count(manager_id)
+from employees;
+
+select distinct manager_id
+from employees
+where manager_id is not null;
+
+select count (distinct manager_id)
+from employees;
+
+select count(manager_id)
+from departments
+union all
+select count (distinct manager_id)
+from employees;
 /* 9
 Listar nombre, apellido de los empleados que les coindice a la vez
 la primera letra de su nombre y el apellido
