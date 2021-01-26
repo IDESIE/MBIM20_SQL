@@ -6,8 +6,6 @@
 */
 
 
-
-
 ------------------------------------------------------------------------------------------------
 --SELECTS SIMPLES
 ------------------------------------------------------------------------------------------------
@@ -44,6 +42,8 @@ select*from countries;
 Ciudad y estado de las localidades
 */
 
+des
+*/
 select
 city,
 state_province
@@ -62,7 +62,6 @@ salary
 
 from employees;
 
-
 /* 8
 Número de departamento, nombre, y manager_id de los departamentos
 */
@@ -74,19 +73,22 @@ manager_id
 
 from departments;
 
-
 /* 9
 Número y nombre de departamento, además, el código del empleado jefe,
 de la localidad 1700.
 */
 
 select
+
 concat (
         concat (department_id, ' '),
         department_name)"Nº y nombre Departamento ",
 manager_id
+
 from departments
 where location_id in 1700;
+
+
 
 
 /* 10
@@ -104,7 +106,6 @@ concat (
         
         from employees;
         
-
 /* 11
 Nombre y número de departamento de los empleados
 ordenados por número de departamento ascendentemente.
@@ -135,6 +136,7 @@ from employees
 order by employee_id desc;
 */
 
+
 /* 15
 Nombre, apellido y salario ordenado por apellido ascendentemente y salario descendentemente
 */
@@ -152,6 +154,7 @@ ordenados descendentemente
 Nombre, apellido y correo de los empleados del departamento 30
 cuyo salario es menor a 3000
 */
+
 select first_name, last_name, email, 
 
 from employees
@@ -194,10 +197,12 @@ empieza por la R, incluidos.
 */
 
 
+
 select employee_id, first_name, last_name
 
     from employees 
     where last_name between 'K%' and 'R';
+
 
 /* 23
 Lista de apellidos que su segunda letra sea una 'a'
@@ -220,9 +225,11 @@ y 'MEDIO' si está entre medias
 Listar los correos concatenados con el texto '@company.com'
 */
 
+
     select  concat (email, '@company.com')
     
     from employees;
+
 /* 27
 Lista de nombres de las ciudades que su país es 'US'
 */
@@ -239,6 +246,7 @@ Número y nombre de los departamentos que tienen un jefe.
 Número y nombre de los departamentos que no tienen jefe.
 */
 
+
 select
     department_id, department_name
     
@@ -252,6 +260,7 @@ Nombre de las columnas de la tabla de empleados 'Employees'
 que no tienen un guión bajo en el nombre.
 */
 
+
 select
     column_name
     
@@ -259,5 +268,5 @@ select
         
     where table_name = 'EMPLOYEES' and column_name not like '%|_%' escape '|';
     
---
+
 ------------------------------------------------------------------------------------------------
