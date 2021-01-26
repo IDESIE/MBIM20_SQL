@@ -30,7 +30,13 @@ from employees
 /* 2
 Actualizarle el salario a 60000
 */
+update jobs
+  SET max_salary = 60000
+where job_id='SF_ENGI';
 
+update employees
+  SET salary = 60000
+where last_name='Dexter';
 /* 3
 Colocarle una comisión igual a la media de comisiones
 Manteniendo dos centésimas como valor.
