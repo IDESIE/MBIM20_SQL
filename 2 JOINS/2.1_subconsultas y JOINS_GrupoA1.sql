@@ -52,6 +52,15 @@ employees.first_name,employees.last_name,employees.salary,department_name,locati
 -- que sean jefes tanto como de departamento como de otro empleado
 -- indicando en una sola columna con un literal 'DEP' si es jefe de departamento
 -- y 'EMP' si es jefe de otro empleado. Ordenados por número de empleado.
+select distinct manager_id,
+'DEP'Tipo_Jefe,employees.first_name,employees.last_name,employees.employee_id
+from departments
+join employees using(manager_id)
+union
+select distinct manager_id,'EMP',employees.first_name,employees.last_name,employees.employee_id
+from employees
+join departments using(manager_id)
+order by employee_id asc;
 
 -- 9
 -- Listar el nombre, apellido y salario de los tres empleados que ganan más
