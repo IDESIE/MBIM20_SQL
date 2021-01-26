@@ -9,7 +9,7 @@ desc employees;
 /* 2
 Describir la tabla departments
 */
-
+desc departments;
 /* 3
 Describir la tabla locations
 */
@@ -22,7 +22,8 @@ from regions;
 /* 5
 Datos de la tabla countries
 */
-
+select*
+from countries;
 /* 6
 Ciudad y estado de las localidades
 */
@@ -36,7 +37,8 @@ from employees;
 /* 8
 Número de departamento, nombre, y manager_id de los departamentos
 */
-
+select department_name,department_id,manager_id
+from departments;
 /* 9
 Número y nombre de departamento, además, el código del empleado jefe,
 de la localidad 1700.
@@ -53,7 +55,10 @@ from departments;
 Nombre y número de departamento de los empleados
 ordenados por número de departamento ascendentemente.
 */
-
+select employees.department_id,department_name
+from employees,departments
+where employees.department_id=departments.department_id
+order by 1 ASC;
 /* 12
 Listar los distintos números de departamento en el que trabajan los empleados.
 */
@@ -68,14 +73,17 @@ from employees
 Listar los distintos números de departamento en el que trabajan los empleados
 ordenados descendentemente.
 */
-select department_id
-from departments
+select distinct departments.department_id
+from employees
+    join departments on employees.department_id = departments.department_id
 order by department_id desc;
 
 /* 14
 Nombre, apellido y salario ordenados por id de empleado descendentemente
 */
-
+select first_name,last_name,salary
+from employees
+order by employee_id DESC;
 /* 15
 Nombre, apellido y salario ordenado por apellido ascendentemente y salario descendentemente
 */
@@ -89,14 +97,17 @@ order by salary desc;
 /* 16
 códigos de los distintos trabajos que existen en el departamento 30
 */
-select job_id
+select distinct job_id
 from employees
 where department_id=30;
 /* 17
 códigos de los distintos trabajos que existen en el departamento 60
 ordenados descendentemente
 */
-
+select job_id
+from job_history
+where department_id=60
+order by department_id ASC;
 /* 18
 Nombre, apellido y correo de los empleados del departamento 30
 cuyo salario es menor a 3000
@@ -119,7 +130,10 @@ nombre, apellido y número de departamento de los empleados
 que no tengan comisión. Ordenados por número de departamento 
 del mayor a menor y por apellido descendentemente.
 */
-
+select first_name,last_name,department_id
+from employees
+where commission_pct IS NULL
+order by 3 DESC,1 DESC;
 /* 21
 nombre, apellido, número de departamento y salario de los empleados
 que no tengan comisión o su salario sea menor a 6000 
@@ -159,7 +173,9 @@ order by last_name asc;
 /* 23
 Lista de apellidos que su segunda letra sea una 'a'
 */
-
+select last_name
+from employees
+where last_name LIKE '_a%';
 /* 24
 Lista de apellidos de empleados donde el apellido empieza por alguna vocal
 y que su salario es menor a 3000 o mayor a 9000
@@ -186,7 +202,9 @@ from employees;
 /* 26
 Listar los correos concatenados con el texto '@company.com'
 */
-
+UPDATE employees
+set email = concat(email,'@company.com')
+where email is not null;
 /* 27
 Lista de nombres de las ciudades que su país es 'US'
 */
@@ -202,7 +220,9 @@ where not country_id='US';
 /* 29
 Número y nombre de los departamentos que tienen un jefe.
 */
-
+select department_id,department_name
+from departments
+where manager_id is not null;
 /* 30
 Número y nombre de los departamentos que no tienen jefe.
 */

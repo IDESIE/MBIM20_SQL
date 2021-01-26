@@ -69,7 +69,13 @@ SELECT first_name, last_name, salary FROM ( SELECT * FROM employees ORDER BY sal
 -- en la parte visual de la aplicación se muestran desplegables
 -- para escoger los valores, pero luego eso se reemplaza en la consulta)
 -- Aquí usamos valores fijos de ejemplo.
-
+SELECT employee_id, hire_Date, city
+FROM employees 
+    join departments on employees.department_id = departments.department_id
+    join locations on departments.location_id = locations.location_id
+        WHERE hire_date > to_date('16/06/01', 'DD/MM/YY') 
+        AND hire_date < to_date('18/06/03', 'DD/MM/YY')
+        AND (city = 'Seattle' or city = 'South San Francisco');
 -- 13
 -- Un listado en el que se indique en líneas separadas
 -- una etiqueda que describa el valor y como valor:
@@ -86,5 +92,11 @@ SELECT first_name, last_name, salary FROM ( SELECT * FROM employees ORDER BY sal
 -- 15
 -- Cuál es la fecha en la que más empleados
 -- se han dado de alta
-
+select count(employee_id)"Numero máximo de empleados", hire_date"Fecha de Alta"
+from employees
+HAVING count(employee_id) = (select max(count(employee_id)) 
+                            from employees 
+                            group by hire_date)
+group by hire_date
+order by count(employee_id) desc;
 ------------------------------------------------------------------------------------------------
