@@ -32,7 +32,7 @@ desc locations;
 Datos de la tabla regions
 */
 
-desc locations;
+desc regions;
 
 /* 5
 Datos de la tabla countries
