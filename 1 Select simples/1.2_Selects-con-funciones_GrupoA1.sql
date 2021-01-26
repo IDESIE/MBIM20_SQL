@@ -61,7 +61,11 @@ group by department_id;
 Mostrar los nombres de los empleados que se repiten indicando cuántos hay del mismo
 en orden descendente.
 */
-
+select first_name,count(employee_id)"Number of employees"
+from employees
+group by first_name
+having count(employee_id)>1
+order by count(employee_id) desc;
 /* 8
 Mostrar en una fila cuántos empleados son jefes de departamento
 y en otra fila cuántos son jefes de otros empleados.
