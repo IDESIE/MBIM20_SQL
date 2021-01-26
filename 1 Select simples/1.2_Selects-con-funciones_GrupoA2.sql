@@ -52,7 +52,21 @@ Por un lado la media entre la media de salarios y el mínimo salario
 Y por otro lado, la media entre la media de salarios y el máximo salario
 Solo la parte entera, sin decimales ni redondeo.
 */
+select sum(salary) "Suma de salarios", min(salary) "Mínimo de salario", max(salary) "Máximo de salario", round(avg(salary),2) "Media de salario"
+from employees;
 
+select avg(salary) "Media salarial" , min(salary) "Mínimo salarial"
+from employees;
+            
+select round(avg(salary),0) "Media de la media y mínimo"
+from employees
+where salary<(select avg(salary)
+            from employees);
+
+ select round(avg(salary),0) "Media de la media y máximo"
+from employees
+where salary>(select avg(salary)
+            from employees);  
 /* 6
 Listar el número de departamento y el máximo salario en cada uno de ellos.
 */
