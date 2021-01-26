@@ -20,7 +20,7 @@ select *
 from regions;
 /* 5
 Datos de la tabla countries
-*/select country_id,country_name,region_id
+*/select *
 from countries;
 
 /* 6
