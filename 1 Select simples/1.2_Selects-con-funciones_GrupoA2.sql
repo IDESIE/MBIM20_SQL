@@ -150,7 +150,30 @@ Un listado por año de la media de salarios
 de los empleados que ingresaron ese año
 ordenados de forma descendente por año
 */
+select avg(salary), hire_date 
+from employees
+group by hire_date;
 
+select extract(YEAR from sysdate)
+from dual;
+
+select distinct extract(YEAR from hire_date)
+from employees
+group by hire_date;
+
+select distinct extract(YEAR from hire_date)
+from employees
+group by hire_date;
+
+select avg(salary), hire_date
+from employees
+group by hire_date
+order by hire_date asc;
+
+select avg(salary), to_char(hire_date, 'YYYY')
+from employees
+group by to_char(hire_date, 'YYYY')
+order by to_char(hire_date, 'YYYY') desc;
 /* 12
 Nombre del día en el que más empleados
 se han dado de alta
