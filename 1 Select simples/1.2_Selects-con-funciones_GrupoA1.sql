@@ -12,7 +12,8 @@ la palabra "de", el mes en minúscula en palabras, la palabra "de", el año en c
 finalizando con un punto. Luego la hora en formato 24h con minutos y segundos.
 Y de etiqueta del campo "Fecha actual".
 */
-
+select to_char(sysdate, 'Day"," dd "de" month "de" yyyy"." hh:mi:ss')"Fecha actual" 
+from dual;
 /* 2
 Día en palabras en el cual naciste
 */
@@ -60,7 +61,11 @@ group by department_id;
 Mostrar los nombres de los empleados que se repiten indicando cuántos hay del mismo
 en orden descendente.
 */
-
+select first_name,count(employee_id)"Number of employees"
+from employees
+group by first_name
+having count(employee_id)>1
+order by count(employee_id) desc;
 /* 8
 Mostrar en una fila cuántos empleados son jefes de departamento
 y en otra fila cuántos son jefes de otros empleados.
