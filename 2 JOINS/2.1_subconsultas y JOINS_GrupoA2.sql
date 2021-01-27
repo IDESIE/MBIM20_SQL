@@ -46,10 +46,10 @@ select first_name, last_name, salary, departments.department_id, city
                     from employees);
 -- 6
 -- Número de empleados y número de departamentos por ciudad (nombre)
-select count(first_name)"Numero de empleados", count(department_name)"Numero de departamentos", city "Ciudad"
+select count(first_name)"Numero de empleados", count (distinct(departments.department_id))"Numero de departamentos", city "Ciudad"
 from employees
-    join departments on employees.department_id = departments.department_id
-    join locations on locations.location_id = departments.location_id
+    full join departments on employees.department_id = departments.department_id
+    full join locations on locations.location_id = departments.location_id
     group by locations.city;
 -- 7
 -- Número de empleados y número de departamentos de todas las ciudades (nombre)
