@@ -53,7 +53,17 @@ Mostrar en una fila cuántos empleados son jefes de departamento
 y en otra fila cuántos son jefes de otros empleados.
 */
 
-
+select  
+    
+    count (distinct employees.employee_id)" Jefes de otros empleados",
+    
+      count (distinct departments.department_id) " Jefes de departamentos"
+    
+ from employees, departments
+ 
+ 
+   where employees.manager_id > 0 and departments.manager_id >0;
+   
 
 
 /* 9
