@@ -16,7 +16,7 @@ Y de etiqueta del campo "Fecha actual".
 /* 2 L
 Día en palabras en el cual naciste
 */
-
+to chart (birth_date,'Day, Month,YYYY');
 /* 3 A
 La suma de salarios, cuál es el mínimo, el máximo y la media de salario
 */
@@ -30,7 +30,14 @@ Por un lado la media entre la media de salarios y el mínimo salario
 Y por otro lado, la media entre la media de salarios y el máximo salario
 Solo la parte entera, sin decimales ni redondeo.
 */
-
+select
+min(salary),
+avg(salary)
+from employees;
+select
+max(salary),
+round(avg(salary))
+from employees;
 /* 6 A
 Listar el número de departamento y el máximo salario en cada uno de ellos.
 */
@@ -44,7 +51,11 @@ en orden descendente.
 Mostrar en una fila cuántos empleados son jefes de departamento
 y en otra fila cuántos son jefes de otros empleados.
 */
-
+select 
+       (departments.manager_id)"Jefe de departamento", 
+       (employees.manager_id) "Jefe de empleado"
+from employees
+join departments on employees.department_id=departments.department_id;
 /* 9 A
 Listar nombre, apellido de los empleados que les coindice a la vez
 la primera letra de su nombre y el apellido
