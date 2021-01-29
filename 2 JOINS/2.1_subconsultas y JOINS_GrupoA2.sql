@@ -123,7 +123,28 @@ SELECT first_name, last_name, salary FROM ( SELECT * FROM employees ORDER BY sal
 -- 'BAJO' si el salario es menor a la mediabaja (media entre el salario mínimo y la media de salarios)
 -- 'ALTO' si el salario es mayor a la mediaalta (media entre el salario máximo y la media de salarios)
 -- 'MEDIO' si el salario está entre la mediabaja y medialata.
+select round(avg(salary),0) "Media de la media y mínimo"
+from employees
+where salary<(select avg(salary)
+            from employees);
 
+ select round(avg(salary),0) "Media de la media y máximo"
+from employees
+where salary>(select avg(salary)
+            from employees);  
+
+
+select first_name, last_name, case
+                                    when salary >(select avg(salary)
+                                                    from employees
+                                                    where salary>   (select avg(salary)
+                                                                    from employees))     then 'ALTO'
+                                    when salary <(select avg(salary)
+                                                    from employees
+                                                    where salary<   (select avg(salary)
+                                                                    from employees))    then 'BAJO'
+                                    else 'MEDIO' end Salario
+from employees;
 -- 12
 -- Número de empleados dados de alta por día
 -- entre dos fechas. Ej: entre 1997-10-10 y 1998-03-07
