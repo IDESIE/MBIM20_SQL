@@ -61,6 +61,55 @@ from employees
 -- indicando en una sola columna con un literal 'DEP' si es jefe de departamento
 -- y 'EMP' si es jefe de otro empleado. Ordenados por número de empleado.
 
+select first_name 
+from employees
+where manager_id is null;
+
+
+
+SELECT w.last_name "Empleado", w.employee_id "EMP",
+       m.last_name "Manager", m.employee_id "MGR"
+FROM employees w join employees m
+ON (w.manager_id = m.employee_id);
+
+
+SELECT manager_id AS "TRABAJADOR", COUNT(*) AS "N° EMPLEADO A SU GARGO" 
+FROM employees 
+GROUP BY manager_id 
+HAVING COUNT(manager_id)>0;
+
+SELECT manager_id AS "TRABAJADOR", COUNT(*) AS "N° DEPARTAMENTOS A SU GARGO" 
+FROM departments 
+GROUP BY manager_id 
+HAVING COUNT(manager_id)>0;
+
+
+SELECT manager_id AS "JEFES DE TRABAJADOR"
+FROM employees 
+GROUP BY manager_id 
+HAVING COUNT(manager_id)>0;
+
+
+SELECT manager_id AS "JEFES DE DEPARTAMENTO"
+FROM departments 
+GROUP BY manager_id 
+HAVING COUNT(manager_id)>0;
+
+
+SELECT manager_id, case 
+                          when manager_id is not null then 'EMP'
+                          end Jefe
+FROM employees 
+GROUP BY manager_id 
+HAVING COUNT(manager_id)>0
+UNION ALL
+SELECT manager_id, case 
+                          when manager_id is not null then 'DEP'
+                          end Jefe
+FROM departments 
+GROUP BY manager_id 
+HAVING COUNT(manager_id)>0;
+
 -- 9
 -- Listar el nombre, apellido y salario de los tres empleados que ganan más
 SELECT first_name, last_name, salary FROM ( SELECT * FROM employees ORDER BY salary desc) WHERE rownum <= 3;
