@@ -41,7 +41,10 @@ where last_name='Dexter';
 Colocarle una comisión igual a la media de comisiones
 Manteniendo dos centésimas como valor.
 */
-
+update employees
+set commission_pct =    (select round(avg(commission_pct),2)
+                        from employees)
+where last_name='Dexter';
 /* 4
 Anonimizar sus datos personales: nombre, apellido, email, teléfono
 */
