@@ -110,6 +110,10 @@ se han dado de alta
 select count (to_char(hire_date,'day')),to_char(hire_date,'day')
 from employees
     group by to_char(hire_date,'day')
-    order by 1 desc;                           /*ESTA PODRÍA ESTAR MEJOR*/
+    order by 1 desc;   
+select count (to_char(hire_date,'day')),to_char(hire_date,'day')
+from employees
+    group by to_char(hire_date,'day')
+    having count (to_char(hire_date,'day'))=19;                          /*ESTA PODRÍA ESTAR MEJOR*/
 
 ------------------------------------------------------------------------------------------------
