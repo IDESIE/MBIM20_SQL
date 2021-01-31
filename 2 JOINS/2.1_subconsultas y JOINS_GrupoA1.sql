@@ -51,7 +51,12 @@ employees.first_name,employees.last_name,employees.salary,department_name,locati
 -- 7
 -- Número de empleados y número de departamentos de todas las ciudades (nombre)
 -- ordenado por número de empleados descendentemente
-
+select locations.city,count(employees.employee_id)"Number of employees",count(departments.department_id)"Number of departments"
+from locations
+full join departments on locations.location_id=departments.location_id
+full join employees on departments.department_id=employees.department_id
+group by locations.city
+order by count(employees.employee_id) desc;
 -- 8
 -- Mostrar el número de empleado, nombre y apellido de los empleados
 -- que sean jefes tanto como de departamento como de otro empleado
