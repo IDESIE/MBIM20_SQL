@@ -79,7 +79,12 @@ order by employee_id asc;
 -- Imaginad que queremos crear nombres de usuario para direcciones de correo.
 -- Cuyo formato es la primera letra del nombre más el apellido.
 -- Queremos saber si del listado de nombres y apellidos alguien coinciden
-
+Select 
+concat(concat(substr (first_name,1,1),''),last_name)"Initial and last name",
+count(employee_id)
+from employees
+group by (concat(substr (first_name,1,1),''),last_name)
+having count(employee_id)>1;
 -- 11
 -- Listar nombre, apellido y un literal que indique el salario.
 -- 'BAJO' si el salario es menor a la mediabaja (media entre el salario mínimo y la media de salarios)
