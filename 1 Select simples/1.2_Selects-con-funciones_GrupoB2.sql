@@ -53,17 +53,13 @@ Mostrar en una fila cuántos empleados son jefes de departamento
 y en otra fila cuántos son jefes de otros empleados.
 */
 
-select  
+   select  
     
-    count (distinct employees.employee_id)" Jefes de otros empleados",
+    count (distinct employees.manager_id)" Jefes de otros empleados",
     
-      count (distinct departments.department_id) " Jefes de departamentos"
+      count (distinct departments.manager_id) " Jefes de departamentos"
     
- from employees, departments
- 
- 
-   where employees.manager_id > 0 and departments.manager_id >0;
-   
+ from employees, departments;
 
 
 /* 9
@@ -87,4 +83,56 @@ Nombre del día en el que más empleados
 se han dado de alta
 */
 
+
+      /* Nombre del día específico*/
+  
+select  TO_CHAR (HIRE_DATE, 'Day') "Nombre del día con más altas"
+from ( select  
+    count (distinct employee_id)
+        employee_id, hire_date
+ from employees 
+  group by (hire_date))
+  where EMPLOYEE_ID = (select max (employee_id) from ( select  
+    count (distinct employee_id)
+        employee_id, hire_date
+ from employees 
+  group by (hire_date)));
+  
+
+
+
+  /* COMPROBACIÓN. Listando las altas en orden de mayor a menor con las fechas 
+
+     select  
+    count (distinct employee_id)
+        employee_id, hire_date, to_char (hire_date, 'Day')
+ from employees 
+  group by (hire_date)
+  order by employee_id desc; 
+
+
+  */
+
+
+
+      
+               /* prueba para EL NOMBRE DEL DÍA CON DÍAS DE LA SEMANA
+  
+
+
+
+select  TO_CHAR (HIRE_DATE, 'Day') "Nombre del día con más altas"
+from ( select  
+    count (distinct employee_id)
+        employee_id, hire_date
+ from employees 
+  group by (hire_date))
+  where EMPLOYEE_ID = 
+  
+                (select max (employee_id) 
+                    from ( select  
+                        count (distinct employee_id)
+                            employee_id, TO_CHAR (hire_date, 'Day')
+                     from employees 
+                      group by to_char (hire_date, 'Day'))); */
 ------------------------------------------------------------------------------------------------
