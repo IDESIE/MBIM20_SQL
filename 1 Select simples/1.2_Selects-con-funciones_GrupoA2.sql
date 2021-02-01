@@ -182,5 +182,9 @@ order by to_char(hire_date, 'YYYY') desc;
 Nombre del día en el que más empleados
 se han dado de alta
 */
-
+HAVING count(employee_id) = (select max(count(employee_id))
+from employees
+group by hire_date)
+group by hire_date
+order by count(employee_id) desc;
 ------------------------------------------------------------------------------------------------
