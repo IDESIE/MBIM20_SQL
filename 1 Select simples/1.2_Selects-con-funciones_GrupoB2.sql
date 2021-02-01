@@ -26,6 +26,13 @@ La suma de salarios, cuál es el mínimo, el máximo y la media de salario
 Cuántos empleados hay, cuántos tienen salario y cuántos tienen comisión.
 */
 
+select 
+    count(*),
+    count (employee_id),
+    count (salary),
+    count (commission_pct)  
+from employees;
+
 /* 5
 Por un lado la media entre la media de salarios y el mínimo salario
 Y por otro lado, la media entre la media de salarios y el máximo salario
@@ -45,6 +52,19 @@ en orden descendente.
 Mostrar en una fila cuántos empleados son jefes de departamento
 y en otra fila cuántos son jefes de otros empleados.
 */
+
+select  
+    
+    count (distinct employees.employee_id)" Jefes de otros empleados",
+    
+      count (distinct departments.department_id) " Jefes de departamentos"
+    
+ from employees, departments
+ 
+ 
+   where employees.manager_id > 0 and departments.manager_id >0;
+   
+
 
 /* 9
 Listar nombre, apellido de los empleados que les coindice a la vez
