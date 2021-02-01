@@ -42,7 +42,8 @@ from dual;
 /* 3
 La suma de salarios, cuál es el mínimo, el máximo y la media de salario
 */
-
+select sum(salary),min(salary),max(salary),round(avg(salary),2)
+from employees;
 /* 4
 Cuántos empleados hay, cuántos tienen salario y cuántos tienen comisión.
 */
@@ -57,7 +58,10 @@ Solo la parte entera, sin decimales ni redondeo.
 /* 6
 Listar el número de departamento y el máximo salario en cada uno de ellos.
 */
-
+select max(salary),department_id
+from employees
+group by department_id
+order BY 2 ASC;
 /* 7
 Mostrar los nombres de los empleados que se repiten indicando cuántos hay del mismo
 en orden descendente.
