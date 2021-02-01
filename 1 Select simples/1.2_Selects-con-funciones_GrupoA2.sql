@@ -54,7 +54,21 @@ Por un lado la media entre la media de salarios y el mínimo salario
 Y por otro lado, la media entre la media de salarios y el máximo salario
 Solo la parte entera, sin decimales ni redondeo.
 */
+select sum(salary) "Suma de salarios", min(salary) "Mínimo de salario", max(salary) "Máximo de salario", round(avg(salary),2) "Media de salario"
+from employees;
 
+select avg(salary) "Media salarial" , min(salary) "Mínimo salarial"
+from employees;
+            
+select round(avg(salary),0) "Media de la media y mínimo"
+from employees
+where salary<(select avg(salary)
+            from employees);
+
+ select round(avg(salary),0) "Media de la media y máximo"
+from employees
+where salary>(select avg(salary)
+            from employees);  
 /* 6
 Listar el número de departamento y el máximo salario en cada uno de ellos.
 */
@@ -75,11 +89,57 @@ order by first_name desc;
 Mostrar en una fila cuántos empleados son jefes de departamento
 y en otra fila cuántos son jefes de otros empleados.
 */
+select employee_id, manager_id
+from employees;
 
+select manager_id, department_id
+from departments;
+
+select manager_id, employee_id
+from employees;
+
+select count(manager_id)
+from departments;
+
+select count(manager_id)
+from employees;
+
+select count(employees.manager_id), count(departments.manager_id)
+from employees, departments;
+
+select count(employees.manager_id), count(departments.manager_id)
+from employees, departments
+where departments.manager_id=employees.manager_id;
+
+select count(employees.manager_id), count(departments.manager_id)
+from employees, departments;
+
+select count(manager_id)
+from departments
+union all
+select count(manager_id)
+from employees;
+
+select distinct manager_id
+from employees
+where manager_id is not null;
+
+select count (distinct manager_id)
+from employees;
+
+select count(manager_id)
+from departments
+union all
+select count (distinct manager_id)
+from employees;
 /* 9
 Listar nombre, apellido de los empleados que les coindice a la vez
 la primera letra de su nombre y el apellido
 */
+
+select first_name, last_name
+from employees
+where substr(first_name, 1,1) = substr(last_name, 1,1);
 
 /* 10
 Número de empleados dados de alta por día
@@ -94,7 +154,30 @@ Un listado por año de la media de salarios
 de los empleados que ingresaron ese año
 ordenados de forma descendente por año
 */
+select avg(salary), hire_date 
+from employees
+group by hire_date;
 
+select extract(YEAR from sysdate)
+from dual;
+
+select distinct extract(YEAR from hire_date)
+from employees
+group by hire_date;
+
+select distinct extract(YEAR from hire_date)
+from employees
+group by hire_date;
+
+select avg(salary), hire_date
+from employees
+group by hire_date
+order by hire_date asc;
+
+select avg(salary), to_char(hire_date, 'YYYY')
+from employees
+group by to_char(hire_date, 'YYYY')
+order by to_char(hire_date, 'YYYY') desc;
 /* 12
 Nombre del día en el que más empleados
 se han dado de alta
