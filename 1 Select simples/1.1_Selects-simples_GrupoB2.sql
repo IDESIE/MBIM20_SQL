@@ -221,6 +221,8 @@ pero como salario una etiqueta que indique
 y 'MEDIO' si está entre medias
 */
 
+
+
 /* 26
 Listar los correos concatenados con el texto '@company.com'
 */
