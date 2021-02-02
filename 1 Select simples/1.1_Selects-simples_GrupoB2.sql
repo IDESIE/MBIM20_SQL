@@ -237,6 +237,8 @@ select first_name, last_name, case
                                 else 'Medio' end salary
 from employees;
 
+
+
 /* 26
 Listar los correos concatenados con el texto '@company.com'
 */
