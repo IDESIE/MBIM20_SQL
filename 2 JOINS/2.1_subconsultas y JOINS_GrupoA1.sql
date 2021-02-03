@@ -147,5 +147,10 @@ where departments.department_id = 50;
 -- 15
 -- Cuál es la fecha en la que más empleados
 -- se han dado de alta
-
+select hire_date, count(employee_id)
+from employees
+group by hire_date
+having count(employee_id)=(select max (count(employee_id))
+                          from employees
+                        group by hire_date);
 ------------------------------------------------------------------------------------------------
