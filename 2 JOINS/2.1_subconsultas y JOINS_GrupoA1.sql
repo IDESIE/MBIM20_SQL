@@ -144,7 +144,15 @@ select
 first_name,last_name,email,departments.department_name
 from employees
 join departments on employees.department_id = departments.department_id
-where departments.department_id = 50; 
+where departments.department_id = 
+(select 
+department_id
+from
+(select department_id,count(employee_id) empleados
+from employees
+group by department_id
+order by 2 desc)
+where rownum = 1);
 
 -- 15
 -- Cuál es la fecha en la que más empleados
