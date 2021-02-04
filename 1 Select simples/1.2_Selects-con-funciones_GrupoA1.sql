@@ -84,7 +84,7 @@ la primera letra de su nombre y el apellido
 */
 select first_name,last_name
 from employees
-where first_name like '_%' and last_name like '_%';   /*ESTA NO ME SALE DEL TODO*/
+where first_name like '_%' and last_name like '_%';   /*No se cómo poner lo de que coincidan*/
 /* 10
 Número de empleados dados de alta por día
 ordenados descendentemente por la fecha
