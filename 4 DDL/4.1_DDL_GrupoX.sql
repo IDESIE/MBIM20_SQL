@@ -69,3 +69,33 @@ En las definiciones establacer las siguientes restricciones
 
 NOTA: Algunos ejercicios provocan errores que deben probar (para ver el error) y corregir.
 */
+
+/*poner hr.facilities si queremos que se genere en nuestra base de datos?*/
+create table facilities (
+        facility_id NUMBER(6,0), 
+        guid VARCHAR2(32 BYTE),
+        facility_name VARCHAR2(20 BYTE)not null,
+        description VARCHAR2(60 BYTE),
+        category VARCHAR2(60 BYTE),
+        address VARCHAR2(60 BYTE),
+        
+        constraint facilities_pk primary key (facility_id),
+        constraint facility_name_uk UNIQUE (facility_name),
+        constraint facility_guid_uk UNIQUE (guid)
+);
+
+/*poner hr.types_2 si queremos que se genere en nuestra base de datos y que no de error con la otra tabla de types?*/
+create table types (
+        type_id NUMBER(6,0), 
+        guid VARCHAR2(32 BYTE),
+        type_name VARCHAR2(20 BYTE)not null,
+        description VARCHAR2(60 BYTE),
+        modelNumber NUMBER(15,0),
+        color VARCHAR2(15 BYTE),
+        warrantyYears NUMBER(2,0),
+        
+        constraint types_pk primary key (type_id),
+        constraint type_name_uk UNIQUE (type_name),
+        constraint type_guid_uk UNIQUE (guid),
+        constraint valid_warranty_years CHECK (warrantyYears > 0)
+);
