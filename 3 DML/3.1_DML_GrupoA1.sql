@@ -20,7 +20,9 @@ Actualizarle el salario a 60000
 Colocarle una comisión igual a la media de comisiones
 Manteniendo dos centésimas como valor.
 */
-
+update employees
+set comission_pct= (select avg(comission_pct)    /*hay que meter la avg dentro de una select,WIP*/
+where last_name='Dexter';
 /* 4
 Anonimizar sus datos personales: nombre, apellido, email, teléfono
 */
