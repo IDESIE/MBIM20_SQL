@@ -130,10 +130,11 @@ CASE
 -- Aquí usamos valores fijos de ejemplo.
 select count(employee_id),hire_date
 from employees
-join departments on employees.department_id=departments.department_id
-join locations on departments.location_id=locations.location_id
 where hire_date between (to_date('1997/10/10','yyyy/mm/dd')) and (to_date('1998/03/07','yyyy/mm/dd'))
 group by hire_date;    
+
+join departments on employees.department_id=departments.department_id
+join locations on departments.location_id=locations.location_id
 
 select city
 from locations
