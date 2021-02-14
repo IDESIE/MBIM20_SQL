@@ -85,9 +85,9 @@ order by employee_id asc;
 
 -- 9
 -- Listar el nombre, apellido y salario de los tres empleados que ganan más 
-select * from  (select first_name,last_name,salary
+select rownum,first_name from  (select first_name,last_name,salary
 from employees
-order by salary DESC) where ROWNUM = 3; /*NO ME SALE LO DE QUE APAREZCAN SOLO 3*/
+where salary is not null order by salary DESC  ) where rownum <4 ;
 -- 10
 -- Imaginad que queremos crear nombres de usuario para direcciones de correo.
 -- Cuyo formato es la primera letra del nombre más el apellido.
