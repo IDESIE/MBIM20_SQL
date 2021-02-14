@@ -30,7 +30,9 @@ where employee_id in (select manager_id
 -- Nombre y apellido  de los empleados del departamento de Marketing
 select first_name,last_name
 from employees
-where department_id=20; /* Estaría mejor hacerlo sin haber buscado primero el department_id de marketing?*/
+where department_id in (select department_id
+                        from departments
+                        where department_name = 'Marketing');
 -- 5
 -- Nombre, apellido, salario, nombre del departamento y ciudad
 -- del empleado que gana más y el que menos
