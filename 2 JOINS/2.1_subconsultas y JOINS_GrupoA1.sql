@@ -87,9 +87,9 @@ order by employee_id asc;
 
 -- 9
 -- Listar el nombre, apellido y salario de los tres empleados que ganan más 
-select * from  (select first_name,last_name,salary
+select rownum,first_name from  (select first_name,last_name,salary
 from employees
-order by salary DESC) where ROWNUM = 3; /*NO ME SALE LO DE QUE APAREZCAN SOLO 3*/
+where salary is not null order by salary DESC  ) where rownum <4 ;
 -- 10
 -- Imaginad que queremos crear nombres de usuario para direcciones de correo.
 -- Cuyo formato es la primera letra del nombre más el apellido.
@@ -128,7 +128,18 @@ CASE
 -- en la parte visual de la aplicación se muestran desplegables
 -- para escoger los valores, pero luego eso se reemplaza en la consulta)
 -- Aquí usamos valores fijos de ejemplo.
+select count(employee_id),hire_date
+from employees
+where hire_date between (to_date('1997/10/10','yyyy/mm/dd')) and (to_date('1998/03/07','yyyy/mm/dd'))
+group by hire_date;    
 
+join departments on employees.department_id=departments.department_id
+join locations on departments.location_id=locations.location_id
+
+select city
+from locations
+where city='Roma' or city= 'Seattle';
+/*no se unirlas aun, WIP*/
 -- 13
 -- Un listado en el que se indique en líneas separadas
 -- una etiqueda que describa el valor y como valor:
