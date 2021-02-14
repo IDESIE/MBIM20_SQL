@@ -136,7 +136,7 @@ group by hire_date;
 select city
 from locations
 where city='Roma' or city= 'Seattle';
-/*no se unirlas, WIP*/
+/*no se unirlas aun, WIP*/
 -- 13
 -- Un listado en el que se indique en líneas separadas
 -- una etiqueda que describa el valor y como valor:
