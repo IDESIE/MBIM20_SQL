@@ -64,10 +64,10 @@ group by city;
 -- 7
 -- Número de empleados y número de departamentos de todas las ciudades (nombre)
 -- ordenado por número de empleados descendentemente
-select locations.city,count(employees.employee_id)"Number of employees",count(departments.department_id)"Number of departments"
+select locations.city,count(distinct employees.employee_id)"Number of employees",count(distinct departments.department_id)"Number of departments"
 from locations
 full join departments on locations.location_id=departments.location_id
-full join employees on departments.department_id=employees.department_id
+full join employees on departments.department_id=employees.department_id 
 group by locations.city
 order by count(employees.employee_id) desc;
 -- 8
