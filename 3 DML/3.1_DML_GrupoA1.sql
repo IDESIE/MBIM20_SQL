@@ -39,6 +39,20 @@ where first_name = 'James' and last_name = 'Dexter';
 /* 2
 Actualizarle el salario a 60000
 */
+update employees
+set
+salary = 60000
+where 
+employee_id = 207;
+
+to check
+select first_name,last_name,departments.department_name,jobs.job_title,LOCATIONS.CITY,COUNTRIES.COUNTRY_NAME,salary
+from employees
+join departments on employees.department_id = departments.department_id
+join jobs on employees.job_id = jobs.job_id
+join locations on departments.LOCATION_id = locations.LOCATION_id
+join COUNTRIES on LOCATIONS.COUNTRY_id = COUNTRIES.COUNTRY_id
+where last_name = 'Dexter';
 
 /* 3
 Colocarle una comisión igual a la media de comisiones
@@ -50,3 +64,35 @@ where last_name='Dexter';
 /* 4
 Anonimizar sus datos personales: nombre, apellido, email, teléfono
 */
+
+update employees
+set
+first_name = 'Anonimo'
+where 
+employee_id = 207;
+
+update employees
+set
+last_name = 'Anonimo'
+where 
+employee_id = 207;
+update employees
+set
+email = 'Null'
+where 
+employee_id = 207;
+update employees
+set
+phone_number = 'Null'
+where 
+employee_id = 207;
+
+To check
+select first_name,last_name,email,Phone_number,departments.department_name,jobs.job_title,LOCATIONS.CITY,COUNTRIES.COUNTRY_NAME,
+salary,commission_pct
+from employees
+join departments on employees.department_id = departments.department_id
+join jobs on employees.job_id = jobs.job_id
+join locations on departments.LOCATION_id = locations.LOCATION_id
+join COUNTRIES on LOCATIONS.COUNTRY_id = COUNTRIES.COUNTRY_id
+where employee_id = 207;
