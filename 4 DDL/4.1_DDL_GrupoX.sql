@@ -84,6 +84,43 @@ create table facilities (
         constraint facility_guid_uk UNIQUE (guid)
 );
 
+
+
+/* tabla verificar que lo de foreign key*/
+create table floors(
+        floor_id NUMBER(6,0), 
+        guid VARCHAR2(32 BYTE),
+        floor_name VARCHAR2(20 BYTE)not null,
+        description VARCHAR2(60 BYTE),
+        category VARCHAR2(60 BYTE),
+        height NUMBER(6,0),
+        facility_id NUMBER(6,0),
+        
+        constraint floors_pk primary key (floor_id),
+        constraint floor_name_uk UNIQUE (floor_name),
+        constraint floor_guid_uk UNIQUE (guid),
+        CONSTRAINT FK_floor_id FOREIGN KEY (facility_id)
+        REFERENCES facilities(facility_id));
+
+
+/* tabla verificar que lo de foreign key*/
+
+create table spaces(
+        space_id NUMBER(6,0), 
+        guid VARCHAR2(32 BYTE),
+        space_name VARCHAR2(20 BYTE)not null,
+        description VARCHAR2(60 BYTE),
+        category VARCHAR2(60 BYTE),
+        usable_height NUMBER(6,0),
+        area NUMBER(6,0),
+        floor_id NUMBER(6,0),
+        
+        constraint spaces_pk primary key (space_id),
+        constraint space_name_uk UNIQUE (space_name),
+        constraint space_guid_uk UNIQUE (guid),
+        CONSTRAINT FK_space_id FOREIGN KEY (floor_id)
+        REFERENCES floors(floor_id));
+        
 /*poner hr.types_2 si queremos que se genere en nuestra base de datos y que no de error con la otra tabla de types?*/
 create table types (
         type_id NUMBER(6,0), 
