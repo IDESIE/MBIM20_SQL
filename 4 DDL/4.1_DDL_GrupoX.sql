@@ -69,3 +69,70 @@ En las definiciones establacer las siguientes restricciones
 
 NOTA: Algunos ejercicios provocan errores que deben probar (para ver el error) y corregir.
 */
+
+/*poner hr.facilities si queremos que se genere en nuestra base de datos?*/
+create table facilities (
+        facility_id NUMBER(6,0), 
+        guid VARCHAR2(32 BYTE),
+        facility_name VARCHAR2(20 BYTE)not null,
+        description VARCHAR2(60 BYTE),
+        category VARCHAR2(60 BYTE),
+        address VARCHAR2(60 BYTE),
+        
+        constraint facilities_pk primary key (facility_id),
+        constraint facility_name_uk UNIQUE (facility_name),
+        constraint facility_guid_uk UNIQUE (guid)
+);
+
+
+
+/* tabla verificar que lo de foreign key*/
+create table floors(
+        floor_id NUMBER(6,0), 
+        guid VARCHAR2(32 BYTE),
+        floor_name VARCHAR2(20 BYTE)not null,
+        description VARCHAR2(60 BYTE),
+        category VARCHAR2(60 BYTE),
+        height NUMBER(6,0),
+        facility_id NUMBER(6,0),
+        
+        constraint floors_pk primary key (floor_id),
+        constraint floor_name_uk UNIQUE (floor_name),
+        constraint floor_guid_uk UNIQUE (guid),
+        CONSTRAINT FK_floor_id FOREIGN KEY (facility_id)
+        REFERENCES facilities(facility_id));
+
+
+/* tabla verificar que lo de foreign key*/
+
+create table spaces(
+        space_id NUMBER(6,0), 
+        guid VARCHAR2(32 BYTE),
+        space_name VARCHAR2(20 BYTE)not null,
+        description VARCHAR2(60 BYTE),
+        category VARCHAR2(60 BYTE),
+        usable_height NUMBER(6,0),
+        area NUMBER(6,0),
+        floor_id NUMBER(6,0),
+        
+        constraint spaces_pk primary key (space_id),
+        constraint space_name_uk UNIQUE (space_name),
+        constraint space_guid_uk UNIQUE (guid),
+        CONSTRAINT FK_space_id FOREIGN KEY (floor_id)
+        REFERENCES floors(floor_id));
+        
+/*poner hr.types_2 si queremos que se genere en nuestra base de datos y que no de error con la otra tabla de types?*/
+create table types (
+        type_id NUMBER(6,0), 
+        guid VARCHAR2(32 BYTE),
+        type_name VARCHAR2(20 BYTE)not null,
+        description VARCHAR2(60 BYTE),
+        modelNumber NUMBER(15,0),
+        color VARCHAR2(15 BYTE),
+        warrantyYears NUMBER(2,0),
+        
+        constraint types_pk primary key (type_id),
+        constraint type_name_uk UNIQUE (type_name),
+        constraint type_guid_uk UNIQUE (guid),
+        constraint valid_warranty_years CHECK (warrantyYears > 0)
+);
