@@ -119,7 +119,11 @@ Listar los distintos números de departamento en el que trabajan los empleados.
 Listar los distintos números de departamento en el que trabajan los empleados
 ordenados descendentemente.
 */
+select department_id
 
+from employees
+
+order by department_id desc;
 /* 14
 Nombre, apellido y salario ordenados por id de empleado descendentemente
 */
@@ -149,6 +153,10 @@ códigos de los distintos trabajos que existen en el departamento 30
 códigos de los distintos trabajos que existen en el departamento 60
 ordenados descendentemente
 */
+select job_id
+from job_history
+where(department_id = 60)
+order by job_id desc;
 
 /* 18
 Nombre, apellido y correo de los empleados del departamento 30
@@ -189,7 +197,10 @@ y que se cumpla que son del departamento 60 o del 90
 ordenados por número de departamento descendentemente
 y por salario ascendentemente.
 */
-
+select first_name, last_name, department_id, salary
+from employees
+where( commission_pct = 'null' or salary < 6000) and (department_id = 60 or department_id = 90)
+order by department_id desc, salary asc;
 /* 22
 Número de empleado, nombre y apellido de los empleados
 desde el apellido que empieza por L hasta los que su apellido
@@ -220,6 +231,11 @@ pero como salario una etiqueta que indique
 'BAJO' si es menor a 4280, 'ALTO' si es mayor a 15230
 y 'MEDIO' si está entre medias
 */
+select first_name, last_name, case
+                                when salary >15230 then 'Alto'
+                                when salary < 4280 then 'Bajo'
+                                else 'Medio' end salary
+from employees;
 
 
 
@@ -242,7 +258,11 @@ Lista de nombre de las ciudades que su país no es Estados Unidos
 
 /* 29
 Número y nombre de los departamentos que tienen un jefe.
-*/
+*/select department_name, department_id
+
+from departments
+
+where manager_id is not null;
 
 /* 30
 Número y nombre de los departamentos que no tienen jefe.
