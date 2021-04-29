@@ -9,8 +9,7 @@
 
 -- 3
 -- Nombre y apellido del jefe del departamento de Marketing
-
--- 4
+ 
 -- Nombre y apellido  de los empleados del departamento de Marketing
 
 -- 5
@@ -19,7 +18,7 @@
 
 -- 6
 -- Número de empleados y número de departamentos por ciudad (nombre)
-
+ 
 -- 7
 -- Número de empleados y número de departamentos de todas las ciudades (nombre)
 -- ordenado por número de empleados descendentemente
@@ -32,7 +31,7 @@
 
 -- 9
 -- Listar el nombre, apellido y salario de los tres empleados que ganan más
-
+ 
 -- 10
 -- Imaginad que queremos crear nombres de usuario para direcciones de correo.
 -- Cuyo formato es la primera letra del nombre más el apellido.
